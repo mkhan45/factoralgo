@@ -1,6 +1,21 @@
 from factoralgo import gcd, isprime
 from collections import Counter
 
+# def gcd(a, b):
+#    if a > b:
+#       a, b = b, a
+
+#    # fac = b // a
+#    remainder = b % a
+
+#    if remainder != 0:
+#       return gcd(a, remainder)
+#    else:
+#       return a
+
+# def isprime(n: int):
+#    return n % 2 != 0 and all(n % i != 0 for i in filter(lambda i: isprime(i), range(3, int(n**0.5) + 1, 2)))
+
 def pollard(n):
    if isprime(n):
       return (n)
