@@ -1,0 +1,13 @@
+[package]
+name = "factoralgo"
+version = "0.1.0"
+authors = ["Mikail Khan <mikail.khan45@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "factoralgo"
+crate-type = ["cdylib"]
+
+[dependencies.pyo3]
+version = "0.8.5"
+features = ["extension-module"]
