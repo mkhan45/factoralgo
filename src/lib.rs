@@ -2,7 +2,7 @@ use pyo3::prelude::*;
 use pyo3::wrap_pyfunction;
 
 #[pyfunction]
-fn gcd(mut a: usize, mut b: usize) -> usize {
+fn gcd(mut a: u128, mut b: u128) -> u128 {
     if a == 0 || b == 0 {
         return 0
     }
@@ -22,8 +22,8 @@ fn gcd(mut a: usize, mut b: usize) -> usize {
 }
 
 #[pyfunction]
-fn isprime(n: usize) -> bool {
-    n == 2 || (n % 2 != 0 && (3..(1 + (n as f32).sqrt().round() as usize)).step_by(2).all(|i|{
+fn isprime(n: u128) -> bool {
+    n == 2 || (n % 2 != 0 && (3..(1 + (n as f32).sqrt().round() as u128)).step_by(2).all(|i|{
         n % i != 0
     }))
 }

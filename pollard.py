@@ -45,5 +45,6 @@ def pollard(n):
       else:
          return (f1, pollard(f2))
 
-import sys
-print(pollard(int(sys.argv[1])))
+if __name__ == "__main__":
+   import sys
+   print(pollard(int(sys.argv[1])))
