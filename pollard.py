@@ -1,5 +1,5 @@
-from factoralgo import gcd, isprime
-from collections import Counter
+from factoralgo import gcd, isprime, pollard_util
+from util import factor
 
 def pollard(n):
    if isprime(n):
@@ -31,28 +31,6 @@ def pollard(n):
       else:
          return (f1, pollard(f2))
 
-def unwrap_tup(tup):
-   ls = []
-   while True:
-      if type(tup) == tuple:
-         ls.append(tup[0])
-         tup = tup[1]
-      else:
-         ls.append(tup)
-         return ls
-   return ls
-
-def prettify_factors(tup):
-   ls = unwrap_tup(tup)
-   cntr = Counter(ls)
-   out_str = []
-   for base, count in cntr.items():
-      if count == 1:
-         out_str.append(f"{base} * ")
-      else:
-         out_str.append(f"{base}^{count} * ")
-   return ''.join(out_str)[:-2]
-
 if __name__ == "__main__":
    import sys
-   print(prettify_factors(pollard(int(sys.argv[1]))))
+   print(factor(int(sys.argv[1]), pollard))

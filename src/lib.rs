@@ -28,9 +28,15 @@ fn isprime(n: u128) -> bool {
     }))
 }
 
+#[pyfunction]
+fn pollard_util(x: u128, n: u128) -> u128 {
+    (x * x + 1) % n
+}
+
 #[pymodule]
 fn factoralgo(py: Python, m: &PyModule) -> PyResult<()> {
     m.add_wrapped(wrap_pyfunction!(gcd))?;
     m.add_wrapped(wrap_pyfunction!(isprime))?;
+    m.add_wrapped(wrap_pyfunction!(pollard_util))?;
     Ok(())
 }
