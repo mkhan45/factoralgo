@@ -7,14 +7,14 @@ def fermat(n):
    b2 = a * a - n
    b = int(round(b2**0.5))
 
-   if n == 1:
-      return 1
-   if isprime(n):
+   if n == 1 or isprime(n):
       return n
 
-   for prime in [2, 3, 5, 7, 11, 13]:
+   # doesn't work on 2 or 3 
+   for prime in [2, 3]:
       if divis(n, prime): return prime, fermat(n // prime)
 
+   # kind
    while (b * b != b2):
       a += 1
       b2 = a * a - n

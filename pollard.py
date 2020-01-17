@@ -1,35 +1,33 @@
 from factoralgo import gcd, isprime, pollard_util
 from util import factor
 
+# all functions return a nested tuple like (a, (b, (c, d))) etc
+# because it makes recursion easier
 def pollard(n):
-   if isprime(n):
-      return (n)
+   if isprime(n): return (n)
+
+   # unlike the others, the only prime pollard 
+   # doesn't work for is 2 so it doesn't make sense 
+   # to have a whole list 
    if n % 2 == 0:
       return 2, pollard(n // 2)
 
-   x = 2
-   y = 2
-   d = 1
+   # pollard doesn't work on perfect squares
+   if int(n**0.5) == n**0.5:
+      return (int(n**0.5), int(n**0.5))
 
-   def g(x, n):
-      return (x**2 + 1) % n
+   # x**2 - 1 also works but I like being positive
+   def g(x, n): return (x**2 + 1) % n
 
+   # this process is pretty similar to wheel where
+   # it tests potential factors in a smart way
+   x, y, d = 2, 2, 1
    while d == 1:
       x = g(x, n)
       y = g(g(y, n), n)
       d = gcd(abs(x - y), n)
-      if d == 0:
-         return (int(n**0.5), int(n**0.5))
 
-   if d == n:
-      return None
-   else:
-      f1 = d
-      f2 = n // f1
-      if isprime(f2):
-         return (f1, f2)
-      else:
-         return (f1, pollard(f2))
+   return d, pollard(n // d)
 
 if __name__ == "__main__":
    import sys
