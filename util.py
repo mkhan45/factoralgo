@@ -5,10 +5,11 @@ def prettify_factors(tup):
    cntr = Counter(ls)
    out_str = []
    for base, count in cntr.items():
-      if count == 1:
-         out_str.append(f"{base} * ")
-      else:
-         out_str.append(f"{base}^{count} * ")
+      if base != 1:
+         if count == 1:
+            out_str.append(f"{base} * ")
+         else:
+            out_str.append(f"{base}^{count} * ")
    return ''.join(out_str)[:-2]
 
 def unwrap_tup(tup):
@@ -24,3 +25,6 @@ def unwrap_tup(tup):
 
 def factor(n, factorfn):
    return prettify_factors(factorfn(n))
+
+def divis(n, k):
+   return n % k == 0
