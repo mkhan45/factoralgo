@@ -1,5 +1,5 @@
 from factoralgo import gcd, isprime, pollard_util
-from util import factor, divis
+from util import full_factor, divis
 import math
 
 def fermat(n):
@@ -10,9 +10,9 @@ def fermat(n):
    if n == 1 or isprime(n):
       return n
 
-   # doesn't work on 2 or 3 
-   for prime in [2, 3]:
-      if divis(n, prime): return prime, fermat(n // prime)
+   # doesn't work on 2 or 3 or 5
+   for prime in [2, 3, 5]:
+      if divis(n, prime): return prime
 
    # kind
    while (b * b != b2):
@@ -20,8 +20,8 @@ def fermat(n):
       b2 = a * a - n
       b = int(round(b2**0.5))
 
-   return (a - b, fermat(n // (a-b)))
+   return a - b
 
 if __name__ == "__main__":
    import sys
-   print(factor(int(sys.argv[1]), fermat))
+   print(full_factor(int(sys.argv[1]), fermat))

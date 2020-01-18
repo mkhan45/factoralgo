@@ -1,7 +1,7 @@
 from collections import Counter
 
 def prettify_factors(tup):
-   ls = unwrap_tup(tup)
+   ls = sorted(unwrap_tup(tup))
    cntr = Counter(ls)
    out_str = []
    for base, count in cntr.items():
@@ -12,7 +12,7 @@ def prettify_factors(tup):
             out_str.append(f"{base} * ")
          else:
             out_str.append(f"{base}^{count} * ")
-   return ''.join(out_str)[:-2]
+   return ''.join(out_str)[:-3]
 
 def unwrap_tup(tup):
    # turns Tuple(a, b, c, d, ...) into [a, b, c, d, e]
@@ -27,7 +27,13 @@ def unwrap_tup(tup):
    return ls
 
 def factor(n, factorfn):
-   return prettify_factors(factorfn(n))
+   fac = factorfn(n)
+   if n == 1 or fac == 0 or n // fac == 0:
+      return n
+   return (fac, factor(n // fac, factorfn))
+
+def full_factor(n, factorfn):
+   return prettify_factors(factor(n, factorfn))
 
 # tests if n is divisible by k
 def divis(n, k):

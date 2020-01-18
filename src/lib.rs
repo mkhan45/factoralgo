@@ -23,7 +23,7 @@ fn gcd(mut a: u128, mut b: u128) -> u128 {
 
 #[pyfunction]
 fn isprime(n: u128) -> bool {
-    n == 2 || n == 3 || (n % 2 != 0 && n % 3 != 0 && (5..((n as f32).sqrt()) as u128).step_by(6).all(|i|{
+    n == 2 || n == 3 || (n % 2 != 0 && n % 3 != 0 && n % 5 != 0 && (5..(n as f32).sqrt() as u128).step_by(6).all(|i|{
         n % i != 0 && n % (i + 2) != 0
     }))
 }
