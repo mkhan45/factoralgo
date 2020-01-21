@@ -10,11 +10,13 @@ def wheel(n):
     # if n is prime, return n
     if isprime(n): return n
 
-    # the increments are basically an optimization because by
-    # doing some math you can tell that all the factors of n will fall on the wheel
+    # this list is gotten by a list of the first few primes and some numbers
+    # that are coprime with all those primes
+    # i.e. 5 + 2 = 7, 7 + 4 = 11, 11 + 2 = 13, 13 + 4 = 17, 17 + 2 = 19
+    # 19 + 4 = 23, 23 + 6 = 29 etc.
     inc = [4, 2, 4, 2, 4, 6, 2, 6]
 
-    # wheel doesn't work on primes less than 7, so you have
+    # this wheel algorithm doesn't work on primes less than 7, so you have
     # to hardcode them. Anything after 7 just makes it faster.
     for prime in [2, 3, 5, 7, 11]:
         if divis(n, prime):

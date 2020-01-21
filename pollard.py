@@ -20,8 +20,7 @@ def pollard(n):
     def g(x, n):
         return (x ** 2 + 1) % n
 
-    # this process is pretty similar to wheel where
-    # it tests potential factors in a smart way
+    # cycle finding
     x, y, d = 2, 2, 1
     while d == 1:
         x = g(x, n)
