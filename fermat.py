@@ -1,4 +1,7 @@
-from factoralgo import gcd, isprime, pollard_util
+try:
+   from factoralgo import gcd, isprime, pollard_util
+except:
+   from util import gcd, isprime
 from util import full_factor, divis
 import math
 

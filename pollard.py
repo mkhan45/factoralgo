@@ -1,4 +1,7 @@
-from factoralgo import gcd, isprime
+try:
+   from factoralgo import gcd, isprime
+except:
+   from util import gcd, isprime
 from util import full_factor
 
 def pollard(n):
