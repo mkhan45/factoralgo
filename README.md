@@ -5,7 +5,7 @@ There are four integer factorization algorithms implemented here: trial division
 &nbsp;
 
 ## `util.py`
-All of the factorization algorithms only return one factor of the number given. At first, I wrote each algorithm to be recursive and return a tuple like ``(a, (b, (c, c)))` or something similar, but eventually I decided to make a separate function for that, so now each function does just return one factor. In `util.py`, `factor` takes the number and a factorization algorithm to use and outputs the full factor tuple, and then `prettify_factors` turns the tuple into nice looking output. Since it's not really recursive anymore, I could've made `factor` return a list like [a, b, c, d], but it doesn't really impact performance enough to matter so I didn't.
+All of the factorization algorithms only return one factor of the number given. At first, I wrote each algorithm to be recursive and return a tuple like `(a, (b, (c, c)))` or something similar, but eventually I decided to make a separate function for that, so now each function does just return one factor. In `util.py`, `factor` takes the number and a factorization algorithm to use and outputs the full factor tuple, and then `prettify_factors` turns the tuple into nice looking output. Since it's not really recursive anymore, I could've made `factor` return a list like [a, b, c, d], but it doesn't really impact performance enough to matter so I didn't.
 
 ## Trial Division
 Trial division is the simplest factorization algorithm; just test every number from 2 to (n // 2 + 1). The code doesn't really need any explanation.
